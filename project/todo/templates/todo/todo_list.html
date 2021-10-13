@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %} Lista de Tarefas{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md">
+        <h1>Criar nova tarefa</h1>
+        <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deleniti, repudiandae ut delectus omnis animi fugit soluta perferendis voluptatem, nulla molestiae atque exercitationem sed minima earum unde dignissimos doloremque! Eaque, saepe.
+        </p>
+    </div>
+    <div class="col-sm">
+        <h1>Lista de Tarefas</h1>
+            <table id="table1">
+                {% for task in object_list %}
+                    <tr>
+                        <td>{{ task.title }}</td>
+                        <td><a href="#">Detalhes</a></td>
+                    </tr>
+                {% empty %}
+                    <p>Você ainda não adicionou nenhuma tarefa.</p>
+                {% endfor %}
+            </table>
+    </div>
+</div>
+
+{% endblock %}
+
+
