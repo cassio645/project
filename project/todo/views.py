@@ -1,4 +1,4 @@
-from django.views.generic import ListView, CreateView, DetailView, UpdateView
+from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 
 from .models import ToDo
@@ -23,4 +23,9 @@ class DetailTodo(DetailView):
 class UpdateTodo(UpdateView):
     model = ToDo
     fields = ["title", "description", "done"]
+    success_url = reverse_lazy('todo:list')
+
+
+class DeleteTodo(DeleteView):
+    queryset = ToDo.objects.all()
     success_url = reverse_lazy('todo:list')

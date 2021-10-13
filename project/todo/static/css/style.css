@@ -1,6 +1,6 @@
 /*Nav bar centralizando texto*/
-.navbar-nav {
-  margin: auto;
+.nav-item{
+  padding-left: 20px;
 }
 
 /* lista de tarefas */
@@ -13,3 +13,33 @@
   padding-left: 18px;
   padding-top: 5px;
 }
+
+/* pagina de deletar box*/
+.delete{
+  background-color: rgba(89, 145, 219, 0.5);
+
+  border-radius: 10px;
+  box-shadow: 5px 5px 15px rgb(95, 84, 77);
+  width: 450px;
+  padding: 20px;
+  margin: 50px auto;
+}
+
+.delete p{
+  text-align: center;
+}
+
+
+/* icones de status da lista */
+i{
+  margin-left: 20px;
+}
+
+#check{
+  color:rgb(16, 187, 10);
+}
+
+#x{
+  color:rgb(207, 21, 21);
+}
+

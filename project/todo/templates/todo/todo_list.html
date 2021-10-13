@@ -15,6 +15,10 @@
                 <tr>
                     <td>{{ task.title }}</td>
                     <td><a href="{% url 'todo:detail' pk=task.id %}">Detalhes</a></td>
+                        <td>{% if task.done %}<i class="bi bi-check-square" id="check"></i>
+                            {% else %}<i class="bi bi-x-square" id="x"></i>
+                            {% endif %}
+                        </td>
                 </tr>
             {% empty %}
                 <p>Você ainda não adicionou nenhuma tarefa.</p>
