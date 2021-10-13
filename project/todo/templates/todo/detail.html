@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}{{ object.title }}{% endblock %}
+
+{% block content %}
+<div class="col-10">
+    <h1>{{ object.title }}</h1>
+    {% if object.done %}
+        <p><strong>Status: </strong>Finalizada</p>
+    {% else %}
+        <p><strong>Status: </strong> Não finalizada</p>
+    {% endif %}
+    
+    <p><strong>Descrição: </strong>{{ object.description }}</p>
+</div>
+
+    <button class="btn btn-success" id="{{object.id}}" onclick="editFunction(this.id)">Editar</button>
+    <button class="btn btn-danger" id="{{object.id}}" onclick="deleteFunction(this.id)">Apagar</button>
+
+{% endblock %}
