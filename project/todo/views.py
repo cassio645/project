@@ -5,6 +5,7 @@ from .models import ToDo
 
 
 class TodoList(ListView):
+    paginate_by = 5
     model = ToDo
     queryset = ToDo.objects.all()
 

@@ -9,20 +9,44 @@
     border-spacing: 15px;
   }
 
-.col-sm{
+.col-10 h1{
   padding-left: 18px;
   padding-top: 5px;
+}
+
+#centralize{
+  font-size: 18px;
+  margin-right: 30%;
+  margin-left: 25%;
+}
+
+#centralize h1{
+  font-size: 42px;
+}
+
+/* pagination */
+.pagination{
+  margin-left: 80px;
+  font-size: 15px;
+
+}
+
+#arrow{
+  text-align: center;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 /* pagina de deletar box*/
 .delete{
   background-color: rgba(89, 145, 219, 0.5);
-
-  border-radius: 10px;
+  border-radius: 5px;
   box-shadow: 5px 5px 15px rgb(95, 84, 77);
-  width: 450px;
+  width: 350px;
   padding: 20px;
-  margin: 50px auto;
+  padding-right: 32px;
+  margin: 100px auto;
+
 }
 
 .delete p{
@@ -31,15 +55,14 @@
 
 
 /* icones de status da lista */
-i{
-  margin-left: 20px;
-}
+
 
 #check{
   color:rgb(16, 187, 10);
+  margin-left: 20px;
 }
 
 #x{
   color:rgb(207, 21, 21);
+  margin-left: 20px;
 }
-

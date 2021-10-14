@@ -3,7 +3,7 @@
 
 {% block content %}
 
-<div class="col-sm">
+<div class="col-md" id="centralize">
     <h1>Lista de Tarefas</h1>
         <table id="table1">
             <tr>
@@ -13,7 +13,7 @@
             </tr>
             {% for task in object_list %}
                 <tr>
-                    <td>{{ task.title }}</td>
+                    <td>{{ task.title| capfirst }}</td>
                     <td><a href="{% url 'todo:detail' pk=task.id %}">Detalhes</a></td>
                         <td>{% if task.done %}<i class="bi bi-check-square" id="check"></i>
                             {% else %}<i class="bi bi-x-square" id="x"></i>
@@ -24,6 +24,18 @@
                 <p>Você ainda não adicionou nenhuma tarefa.</p>
             {% endfor %}
         </table>
+
+        <div class="pagination">
+            {% if page_obj.has_previous %}
+                <a href="?page={{ page_obj.previous_page_number }}"><i class="bi bi-arrow-left" id="arrow"></i></a>
+            {% endif %}
+
+             {{ page_obj.number }} de {{ page_obj.paginator.num_pages }} 
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}"><i class="bi bi-arrow-right" id="arrow"></i></a>
+            {% endif %}
+        </div>
 </div>
 
 
