@@ -9,16 +9,24 @@ from .models import ToDo
 
 @method_decorator(login_required, name='dispatch')
 class TodoList(ListView):
-    paginate_by = 5
     model = ToDo
-    queryset = ToDo.objects.all()
+    context_object_name = 'list_todo'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['list_todo'] = context['list_todo'].filter(user=self.request.user)
+        return context
 
 
 @method_decorator(login_required, name='dispatch')
 class CreateTodo(CreateView):
     model = ToDo
-    fields = ["title", "description", "done"]
+    fields = ['title', 'description', 'done']
     success_url = reverse_lazy('todo:list')
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super(CreateTodo, self).form_valid(form)
 
 
 @method_decorator(login_required, name='dispatch')

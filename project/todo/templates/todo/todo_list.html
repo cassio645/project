@@ -11,11 +11,11 @@
                 <th>Ver mais</th>
                 <th>Finalizado</th>
             </tr>
-            {% for task in object_list %}
+            {% for todo in list_todo %}
                 <tr>
-                    <td>{{ task.title| capfirst }}</td>
-                    <td><a href="{% url 'todo:detail' pk=task.id %}">Detalhes</a></td>
-                        <td>{% if task.done %}<i class="bi bi-check-square" id="check"></i>
+                    <td>{{ todo.title| capfirst }}</td>
+                    <td><a href="{% url 'todo:detail' pk=todo.id %}">Detalhes</a></td>
+                        <td>{% if todo.done %}<i class="bi bi-check-square" id="check"></i>
                             {% else %}<i class="bi bi-x-square" id="x"></i>
                             {% endif %}
                         </td>
