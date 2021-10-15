@@ -1,5 +1,5 @@
 from django.contrib.auth.decorators import login_required
-from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
+from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView, TemplateView
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
@@ -50,3 +50,7 @@ class DeleteTodo(DeleteView):
 
     def get_queryset(self):
         return ToDo.objects.filter(user=self.request.user)
+
+
+class About(TemplateView):
+    template_name = "todo/about.html"
