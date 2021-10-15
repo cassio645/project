@@ -11,11 +11,11 @@ from .models import ToDo
 class TodoList(ListView):
     model = ToDo
     context_object_name = 'list_todo'
+    paginate_by = 5
     
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['list_todo'] = context['list_todo'].filter(user=self.request.user)
-        return context
+    def get_queryset(self):
+        return ToDo.objects.filter(user=self.request.user)
+
 
 
 @method_decorator(login_required, name='dispatch')
@@ -31,8 +31,10 @@ class CreateTodo(CreateView):
 
 @method_decorator(login_required, name='dispatch')
 class DetailTodo(DetailView):
-    queryset = ToDo.objects.all()
     template_name = 'todo/detail.html'
+
+    def get_queryset(self):
+        return ToDo.objects.filter(user=self.request.user)
 
 
 @method_decorator(login_required, name='dispatch')
@@ -44,5 +46,7 @@ class UpdateTodo(UpdateView):
 
 @method_decorator(login_required, name='dispatch')
 class DeleteTodo(DeleteView):
-    queryset = ToDo.objects.all()
     success_url = reverse_lazy('todo:list')
+
+    def get_queryset(self):
+        return ToDo.objects.filter(user=self.request.user)
