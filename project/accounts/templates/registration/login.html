@@ -8,7 +8,7 @@
     <form method="post">
         {% csrf_token %}
         {{ form|crispy }}
-        <input class="btn btn-success" type="submit" value="Entrar">
+        <input class="btn btn-primary" type="submit" value="Entrar">
     </form>
     <p><small>Não possui conta? Clique <a href="{% url 'auth:signup' %}">aqui</a></small></p>
 </div>
