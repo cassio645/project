@@ -15,6 +15,6 @@
 </div>
 
     <button class="btn btn-primary" id="{{object.id}}" onclick="editFunction(this.id)">Editar</button>
-    <button class="btn btn-danger" id="{{object.id}}" onclick="deleteFunction(this.id)">Apagar</button>
+    <button class="btn btn-danger" onclick="deleteFunction('{{object.id}}', '{{object.title}}')">Apagar</button>
 
 {% endblock %}

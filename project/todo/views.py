@@ -3,7 +3,7 @@ from django.views.generic import ListView, CreateView, DetailView, UpdateView, D
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
-
+from django.shortcuts import redirect
 from .models import ToDo
 
 
@@ -43,13 +43,13 @@ class UpdateTodo(UpdateView):
     fields = ["title", "description", "done"]
     success_url = reverse_lazy('todo:list')
 
+@login_required()
+# atualizado com function, pois apagarei com js
+def delete_todo(request, pk):
+    task = ToDo.objects.get(pk=pk)
+    task.delete()
+    return redirect('todo:list')
 
-@method_decorator(login_required, name='dispatch')
-class DeleteTodo(DeleteView):
-    success_url = reverse_lazy('todo:list')
-
-    def get_queryset(self):
-        return ToDo.objects.filter(user=self.request.user)
 
 
 class About(TemplateView):
