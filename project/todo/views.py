@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView, TemplateView
 from django.urls import reverse_lazy
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.utils.decorators import method_decorator
 from django.shortcuts import redirect
 from .models import ToDo
@@ -47,7 +47,13 @@ class UpdateTodo(UpdateView):
 # atualizado com function, pois apagarei com js
 def delete_todo(request, pk):
     task = ToDo.objects.get(pk=pk)
-    task.delete()
+    user = User.objects.get(username=request.user)
+
+    user_delete = str(user).lower().strip()
+    autor_task = str(task.user).lower().strip()
+
+    if user_delete == autor_task:
+        task.delete()
     return redirect('todo:list')
 
 
