@@ -1,3 +1,4 @@
+
 /*Nav bar centralizando texto*/
 .nav-item{
   padding-left: 20px;
@@ -36,11 +37,6 @@
 
 /* detail */
 
-.col-10 h1{
-  padding-left: 18px;
-  padding-top: 5px;
-}
-
 .description{
   padding-top: 10px;
 }
@@ -48,8 +44,8 @@
 
 #centralize{
   font-size: 18px;
-  margin-right: 60%;
-  margin-left: 15%;
+  margin-left: auto;
+  margin-left: auto;
 }
 
 #centralize h1{
@@ -102,8 +98,8 @@
 /* auth */
 #auth-centralize{
   font-size: 18px;
-  margin-right: 20%;
-  margin-left: 15%;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 #auth-centralize h1{

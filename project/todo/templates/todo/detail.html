@@ -2,19 +2,20 @@
 {% block title %}{{ object.title| capfirst }}{% endblock %}
 
 {% block content %}
-<div class="col-10">
-    <h1 id=h1-detail>{{ object.title| capfirst }}</h1>
-    <div class="description">
-        <p><strong>Descrição: </strong>{{ object.description }}</p>
-        {% if object.done %}
-            <p><strong>Status: </strong>Finalizada</p>
-        {% else %}
-            <p><strong>Status: </strong> Não finalizada</p>
-        {% endif %}
+<div class="row">
+    <div class="col-md-8">
+        <h1 id=h1-detail>{{ object.title| capfirst }}</h1>
+        <div class="description">
+            <p><strong>Descrição: </strong>{{ object.description }}</p>
+            {% if object.done %}
+                <p><strong>Status: </strong>Finalizada</p>
+            {% else %}
+                <p><strong>Status: </strong> Não finalizada</p>
+            {% endif %}
+        </div>
+        <button class="btn btn-primary" id="{{object.id}}" onclick="editFunction(this.id)">Editar</button>
+        <button class="btn btn-danger" onclick="deleteFunction('{{object.id}}', '{{object.title}}')">Apagar</button>
     </div>
 </div>
-
-    <button class="btn btn-primary" id="{{object.id}}" onclick="editFunction(this.id)">Editar</button>
-    <button class="btn btn-danger" onclick="deleteFunction('{{object.id}}', '{{object.title}}')">Apagar</button>
 
 {% endblock %}

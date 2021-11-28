@@ -3,39 +3,41 @@
 
 {% block content %}
 
-<div class="col-10" id="centralize">
-    <h1>Lista de Tarefas</h1>
-        <table id="table1">
-            <tr>
-                <th>Título</th>
-                <th>Ver mais</th>
-                <th>Finalizado</th>
-            </tr>
-            {% for todo in list_todo %}
+<div class="row">
+    <div class="col-md-10" id="centralize">
+        <h1>Lista de Tarefas</h1>
+            <table id="table1">
                 <tr>
-                    <td>{{ todo.title| capfirst }}</td>
-                    <td><a href="{% url 'todo:detail' pk=todo.id %}">Detalhes</a></td>
-                        <td>{% if todo.done %}<i class="bi bi-check-square" id="check"></i>
-                            {% else %}<i class="bi bi-x-square" id="x"></i>
-                            {% endif %}
-                        </td>
+                    <th>Título</th>
+                    <th>Ver mais</th>
+                    <th>Finalizado</th>
                 </tr>
-            {% empty %}
-                <p>Você ainda não adicionou nenhuma tarefa.</p>
-            {% endfor %}
-        </table>
-
-        <div class="pagination">
-            {% if page_obj.has_previous %}
-                <a href="?page={{ page_obj.previous_page_number }}"><i class="bi bi-arrow-left" id="arrow"></i></a>
-            {% endif %}
-
-             {{ page_obj.number }} de {{ page_obj.paginator.num_pages }} 
-
-            {% if page_obj.has_next %}
-                <a href="?page={{ page_obj.next_page_number }}"><i class="bi bi-arrow-right" id="arrow"></i></a>
-            {% endif %}
-        </div>
+                {% for todo in list_todo %}
+                    <tr>
+                        <td>{{ todo.title| capfirst }}</td>
+                        <td><a href="{% url 'todo:detail' pk=todo.id %}">Detalhes</a></td>
+                            <td>{% if todo.done %}<i class="bi bi-check-square" id="check"></i>
+                                {% else %}<i class="bi bi-x-square" id="x"></i>
+                                {% endif %}
+                            </td>
+                    </tr>
+                {% empty %}
+                    <p>Você ainda não adicionou nenhuma tarefa.</p>
+                {% endfor %}
+            </table>
+    
+            <div class="pagination">
+                {% if page_obj.has_previous %}
+                    <a href="?page={{ page_obj.previous_page_number }}"><i class="bi bi-arrow-left" id="arrow"></i></a>
+                {% endif %}
+    
+                 {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}
+    
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}"><i class="bi bi-arrow-right" id="arrow"></i></a>
+                {% endif %}
+            </div>
+    </div>
 </div>
 
 
